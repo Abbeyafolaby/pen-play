@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include ("../partials/head.ejs") %>
+</head>
+<body>
+    <header>
+        <%- include("../partials/editHeader.ejs") %>
+    </header>
+    <div class="container mx-auto py-10">
+        <form action="/<%= post.id %>?_method=PUT" method="POST">
+            <label for="title" class="block text-lg font-bold mb-2">Title</label>
+            <input type="text" name="updatedTitle" id="title<%= post.id %>" class="w-full mb-4 p-2 border border-gray-300 rounded" value="<%= post.title %>" required>
+        
+            <label for="content" class="block text-lg font-bold mb-2">Content</label>
+            <textarea name="updatedContent" id="content<%= post.id %>" class="w-full mb-4 p-2 border border-gray-300 rounded" required><%= post.content %></textarea>
+        
+            <label for="category" class="block text-lg font-bold mb-2">Category</label>
+            <input type="text" name="updatedCategory" id="category<%= post.id %>" class="w-full mb-4 p-2 border border-gray-300 rounded" value="<%= post.category %>">
+        
+            <label for="tags" class="block text-lg font-bold mb-2">Tags (comma separated)</label>
+            <input type="text" name="updatedTags" id="tags<%= post.id %>" class="w-full mb-4 p-2 border border-gray-300 rounded" value="<%= post.tags.join(', ') %>">
+        
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Update Post
+            </button>
+        </form>
+    </div>
+</body>
+</html>
